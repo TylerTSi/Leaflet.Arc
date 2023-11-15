@@ -23,11 +23,9 @@ function _createLatLngs(line, from) {
          * stores how many times arc is broken over 180 longitude
          * @type {number}
          */
-        let wrap = from.lng - line.geometries[0].coords[0][0] - 360;
 
         return line.geometries
             .map(subLine => {
-                wrap += 360;
                 return subLine.coords.map(point => L.latLng([point[1], point[0] + wrap]));
             })
             .reduce((all, latlngs) => all.concat(latlngs));
