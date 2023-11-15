@@ -26,7 +26,7 @@ function _createLatLngs(line, from) {
 
         return line.geometries
             .map(subLine => {
-                return subLine.coords.map(point => L.latLng([point[1], point[0] + wrap]));
+                return subLine.coords.map(point => L.latLng([point[1], point[0]]));
             })
             .reduce((all, latlngs) => all.concat(latlngs));
     } else {
